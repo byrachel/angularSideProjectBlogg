@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { PostService } from '../services/post.service'
-import Post from '../models/Post';
+import { PostService } from '../../services/post.service'
+import Post from '../../models/Post';
 
 @Component({
   selector: 'app-single-post',
@@ -18,9 +18,11 @@ export class SinglePostComponent implements OnInit {
     link: '',
     like: null
   }
+  isAuth: boolean = true;
 
   constructor(private postService: PostService,
-              private actRoute: ActivatedRoute) { }
+              private actRoute: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
     let id = this.actRoute.snapshot.paramMap.get('id');
@@ -31,8 +33,20 @@ export class SinglePostComponent implements OnInit {
     this.postService.getPost(id)
       .subscribe(data => {
         this.post = data;
-        console.log(this.post);
       });
+  }
+
+  onBack() {
+    this.router.navigate(['/posts']);
+  }
+
+  onEditPost(id:string) {
+    if(this.isAuth) {
+      this.router.navigate(['/post', 'update', id]);
+      }
+    else {
+      this.router.navigate(['/']);
+    }
   }
 
 }

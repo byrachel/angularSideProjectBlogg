@@ -7,7 +7,7 @@
             <div class="divider"></div>
             <p class="mx-2 resum">Veillez à formuler des phrases intelligibles et sans faute de français. Si nécessaire, vous pourrez éditer ce post. Merci de votre participation.</p>
 
-            <form [formGroup]="postForm" (ngSubmit)="addPost()">
+            <form [formGroup]="postForm" (ngSubmit)="savePost()">
             <div class="form-group">
                 <input type="text" class="form-control mx-2" formControlName="title" placeholder="Titre" />
             </div>

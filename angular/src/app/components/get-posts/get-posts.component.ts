@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PostService } from '../services/post.service';
+import { PostService } from '../../services/post.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -21,12 +21,15 @@ export class GetPostsComponent implements OnInit {
   displayPosts(){
     this.postService.getPosts().subscribe((data) => {
       this.Post = data;
-      console.log(data)
     })    
   }
 
-  onClickPost(id: number) {
+  onClickPost(id: string) {
     this.router.navigate(['/post', id]);
+  }
+
+  onClickCategory(category: string) {
+    this.router.navigate(['/post/api', category]);
   }
 
 }

@@ -4,14 +4,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
-import { AddPostComponent } from './add-post/add-post.component';
-import { GetPostsComponent } from './get-posts/get-posts.component';
+import { AddPostComponent } from './components/add-post/add-post.component';
+import { GetPostsComponent } from './components/get-posts/get-posts.component';
+import { SinglePostComponent } from './components/single-post/single-post.component'
 
 import { PostService } from './services/post.service';
+
 import { HomeComponent } from './home/home.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { SinglePostComponent } from './single-post/single-post.component'
+import { CategoryPostsComponent } from './components/category-posts/category-posts.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,8 @@ import { SinglePostComponent } from './single-post/single-post.component'
     GetPostsComponent,
     HomeComponent,
     SidebarComponent,
-    SinglePostComponent
+    SinglePostComponent,
+    CategoryPostsComponent
   ],
   imports: [
     BrowserModule,

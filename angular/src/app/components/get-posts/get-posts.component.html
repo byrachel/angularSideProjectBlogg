@@ -9,7 +9,7 @@
 
                 <h3 class="card-header title uppercase" (click)="onClickPost(p._id)">{{ p.title }}</h3>
                 <div class="card-body">
-                    <button class="card-title small" (click)="onClickCategory(post.category)">Catégorie: {{ p.category }}</button>
+                    <button class="card-title small" (click)="onClickCategory(p.category)">Catégorie: {{ p.category }}</button>
                     <p class="card-text">{{ p.resum }}</p>
                 </div>
             </div>

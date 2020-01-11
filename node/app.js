@@ -47,16 +47,3 @@ app.use('/img', express.static(path.join(__dirname, 'img')));
 
 // Export : Permet d'accéder à ce fichier depuis toute l'application
 module.exports = app;
-
-
-// // Méthode NEXT permet d'exécuter le middleware puis de passer au suivant
-// app.use((req,res,next) => {
-//     // Envoi d'un statut spécifique
-//     res.status(201);
-//     next();
-// })
-
-// // réponse d'Express pour toute requête (en json)
-// app.use((req,res) => {
-//     res.json({message: 'requête reçue'});
-// })

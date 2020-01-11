@@ -14,15 +14,14 @@ const stuffCtrl = require('../controllers/stuff');
 router.post('/create/', stuffCtrl.createPost);
 
 // Methode PUT pour mettre à jour un objet + :id comme paramètre
-router.put('/update/:id', auth, multer, stuffCtrl.modifyPost);
+router.put('/update/:id', stuffCtrl.modifyPost);
 
 // Méthode DELETE pour supprimer un objet 
 router.delete('/delete/:id', auth, stuffCtrl.deletePost);
 
-// Méthode GET + :id -> permet de le rendre accessible comme paramètre
-router.get('/:id', stuffCtrl.getOnePost);
-
-// Méthode GET qui permet d'envoyer des données au frontend
+// Méthodes GET qui permettent d'envoyer des données au frontend
 router.get('/', stuffCtrl.getAllPosts);
+router.get('/:id', stuffCtrl.getOnePost);
+router.get('/api/:category', stuffCtrl.getPostsByCategory);
 
 module.exports = router;

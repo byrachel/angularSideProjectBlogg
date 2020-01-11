@@ -38,8 +38,20 @@ export class PostService {
     )
   }
 
+  // Get Posts By Category
+  getPostsByCategory(category:string): Observable<any> {
+    let url = `${this.uri}/api/${category}`;
+    console.log(category)
+    return this.http.get(url, {headers: this.headers}).pipe(
+      map((res: Response) => {
+        return res || {}
+      }),
+      catchError(this.errorMgmt)
+    )
+  }
+
   // Update Post
-  updatePost(id, data): Observable<any> {
+  updatePost(id:string, data): Observable<any> {
     let url = `${this.uri}/update/${id}`;
     return this.http.put(url, data, { headers: this.headers }).pipe(
       catchError(this.errorMgmt)
