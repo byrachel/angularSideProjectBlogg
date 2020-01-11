@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HTTP_INTERCEPTORS  } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -11,10 +11,16 @@ import { GetPostsComponent } from './components/get-posts/get-posts.component';
 import { SinglePostComponent } from './components/single-post/single-post.component'
 
 import { PostService } from './services/post.service';
+import { JwtInterceptor } from './services/jwt.interceptor';
+import { ErrorInterceptor } from './services/error.interceptor';
+import { AuthenticationService } from './services/authentication.service'
 
 import { HomeComponent } from './home/home.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { CategoryPostsComponent } from './components/category-posts/category-posts.component';
+import { LoginComponent } from './components/user/login/login.component';
+import { SignupComponent } from './components/user/signup/signup.component';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +30,9 @@ import { CategoryPostsComponent } from './components/category-posts/category-pos
     HomeComponent,
     SidebarComponent,
     SinglePostComponent,
-    CategoryPostsComponent
+    CategoryPostsComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +41,10 @@ import { CategoryPostsComponent } from './components/category-posts/category-pos
     HttpClientModule 
   ],
   providers: [
-    PostService
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    PostService,
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })

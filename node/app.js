@@ -41,7 +41,7 @@ const userRoutes = require('./routes/user');
 
 // Enregistrement des routes dans l'application
 app.use('/api/', stuffRoutes);
-app.use('/api/auth', userRoutes);
+app.use('/auth/', userRoutes);
 // Accès à la lecture des images dans le dossier /img
 app.use('/img', express.static(path.join(__dirname, 'img')));
 
