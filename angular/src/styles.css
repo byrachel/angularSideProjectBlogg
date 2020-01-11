@@ -1,0 +1,131 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.space {
+    margin: 5% 0;
+}
+
+.bold {
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.light {
+    font-weight: 300;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+  font-size: 1.8em;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+h2 {
+    font-size: 1.8em;
+    line-height: 2.6em;
+    letter-spacing: 1px;
+  }
+
+h3 {
+    font-size: 1.4em;
+    line-height: 2em;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.card-header {
+    color: black;
+}
+.card-header, a:hover {
+    text-decoration: none;
+}
+
+.title {
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+}
+
+.title:hover {
+    transform: scale(1.05);
+}
+
+.big-title {
+    font-size: 2em;
+    line-height: 1.8em;
+}
+
+.big-title a {
+    text-decoration: none;
+    color: black;
+}
+
+.big-title a:hover {
+    text-decoration: none;
+    background-color: #F8F0ED;
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 1.6em;
+}
+
+.small {
+    font-size: 0.8em;
+    text-transform: uppercase;
+    color: grey;
+    letter-spacing: 1px;
+}
+
+.resum {
+    font-size: 0.9em;
+    color: grey;
+    letter-spacing: 1px;
+}
+
+.lien {
+    font-size: 0.9em;
+    letter-spacing: 1px;
+}
+
+.lien a {
+    padding: 10px;
+    color: black;
+}
+
+.lien a:hover {
+    font-weight: 700;
+    text-decoration: none;
+    background-color: #F8F0ED;
+}
+
+button:hover {
+    text-decoration: none;
+    background-color: #F8F0ED;
+}
+
+.divider {
+    border-bottom: solid 5px #F8F0ED;
+    max-width: 250px;
+    margin-bottom: 3%;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.card-header {
+    background-color: #F8F0ED !important;
+    border: none;
+}
+
+.card {
+    border-color: #F8F0ED !important;
+}
+
+.pink-banner {
+    background-color: #F8F0ED;
+}
