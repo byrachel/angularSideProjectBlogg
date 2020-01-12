@@ -5,13 +5,15 @@ import { map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { User } from '../models/User';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient,
+                private router: Router) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
     }
@@ -20,35 +22,37 @@ export class AuthenticationService {
         return this.currentUserSubject.value;
     }
 
-    login(email: string, password: string) {
-        return this.http.post<any>(`${environment.apiUrl}/auth/login`, { email, password })
-            .pipe(map(user => {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                this.currentUserSubject.next(user);
-                return user;
-            }));
-    }
+  login(email: string, password: string) {
+    return this.http.post<any>(`${environment.apiUrl}/auth/login`, { email, password })
+      .pipe(map(user => {
+          // store user details and jwt token in local storage to keep user logged in between page refreshes
+          localStorage.setItem('currentUser', JSON.stringify(user));
+          this.currentUserSubject.next(user);
+          this.router.navigate(['/user']);
+          return user;
+      }));
+  }
 
-    logout() {
-        // remove user from local storage to log user out
-        localStorage.removeItem('currentUser');
-        this.currentUserSubject.next(null);
-    }
+  logout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('currentUser');
+    this.currentUserSubject.next(null);
+  }
 
-    createNewUser(email: string, password: string) {
-        return new Promise((resolve, reject) => {
-          this.http.post(
-            `${environment.apiUrl}/auth/signup`,
-            { email: email, password: password })
-            .subscribe(
-              () => {
-                this.login(email, password)
-              },
-              (error) => {
-                reject(error);
-              }
-            );
-        });
-      }
+  createNewUser(email: string, password: string) {
+    return new Promise((resolve, reject) => {
+      this.http.post(
+        `${environment.apiUrl}/auth/signup`,
+        { email: email, password: password })
+        .subscribe(
+          () => {
+            this.login(email, password)
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    });
+  }
+  
 }

@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-module.exports = (req, res, next) => {
+module.exports = async (req, res, next) => {
     try {
         // J'utilise le header de la requête
         // Je récupère un tableau avec le bearer + token
@@ -9,12 +9,15 @@ module.exports = (req, res, next) => {
         const decodedToken = jwt.verify(token, 'MY_SUPER_SECRET_TOKEN')
         // Une fois le token vérifié je peux récupérer le userId qui est dans l'objet user
         const userId = decodedToken.userId;
+        const user  = await User.findOne({ _id:decodedToken._id, 'tokens.token': token})
         // Vérification que le userID correspond à celui du token
         if(req.body.userID && req.body.userID !== userId) {
             // Si l'ID est différent de celui de la requête, il est renvoyé
             throw 'User ID non valable';
         } else {
             // Si l'ID est bien authentifié, je passe au middleware suivant
+            req.token = token
+            req.user = user
             next();
         }
     } catch (error) {

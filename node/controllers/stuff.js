@@ -3,7 +3,15 @@ let Post = require('../models/Thing');
 
 // Logique de la route POST : enregistre les données du formulaire addPost
 exports.createPost = (req, res, next) => {
-  Post.create(req.body, (error, data) => {
+  Post.create({
+    title: req.body.title,
+    category: req.body.category,
+    resum: req.body.resum,
+    content: req.body.content,
+    link: req.body.link,
+    like: req.body.like,
+    author: ''
+  }, (error, data) => {
     if (error) {
       return next(error)
     } else {
@@ -16,6 +24,13 @@ exports.createPost = (req, res, next) => {
 exports.modifyPost = (req, res, next) => {
   Post.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
     .then(() => res.status(201).json({ message: 'Objet modifié !'}))
+    .catch(error => res.status(400).json({ error }));
+}
+
+// Logique de la route PUT pour mettre à jour le nombre de like
+exports.addLike = (req, res, next) => {
+  Post.updateOne({ _id: req.params.id }, {$inc : {like : 1}})
+    .then(() => res.status(201).json({ message: 'Great!'}))
     .catch(error => res.status(400).json({ error }));
 }
 

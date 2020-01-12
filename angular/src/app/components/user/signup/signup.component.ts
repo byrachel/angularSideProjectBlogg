@@ -12,24 +12,38 @@ export class SignupComponent implements OnInit {
 
   signupForm: FormGroup;
   errorMessage: string;
+  loginForm: FormGroup;
+  error = '';
+  message:string = ''
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private auth: AuthenticationService,
-  ) { }
+    private authenticationService: AuthenticationService,
+  ) {
+    // redirect to home if already logged in
+    if (this.authenticationService.currentUserValue) { 
+      this.router.navigate(['/user']);
+    }
+  }
 
   ngOnInit() {
+
     this.signupForm = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
       password: [null, Validators.required]
+    });
+
+    this.loginForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
   onSignup() {
     const email = this.signupForm.get('email').value;
     const password = this.signupForm.get('password').value;
-    this.auth.createNewUser(email, password).then(
+    this.authenticationService.createNewUser(email, password).then(
       () => {
         this.router.navigate(['/posts']);
       }
@@ -38,6 +52,25 @@ export class SignupComponent implements OnInit {
         this.errorMessage = error.message;
       }
     );
+  }
+
+  // convenience getter for easy access to form fields
+  get f() { return this.loginForm.controls; }
+
+  onSubmitIn() {
+    // stop here if form is invalid
+    if (this.loginForm.invalid) {
+        return;
+    }
+
+    this.authenticationService.login(this.f.email.value, this.f.password.value)
+      .subscribe(
+        data => {
+          return(this.message = 'Vous êtes connecté.');
+        },
+        error => {
+            this.error = error;
+        });
   }
 
 }

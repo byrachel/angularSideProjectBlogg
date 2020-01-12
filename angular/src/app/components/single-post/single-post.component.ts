@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { PostService } from '../../services/post.service'
 import Post from '../../models/Post';
@@ -16,17 +16,21 @@ export class SinglePostComponent implements OnInit {
     resum: '',
     content: '',
     link: '',
-    like: null
+    like: 0
   }
+
   isAuth: boolean = true;
 
   constructor(private postService: PostService,
               private actRoute: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private ngZone: NgZone) {}
+  
 
   ngOnInit() {
     let id = this.actRoute.snapshot.paramMap.get('id');
     this.displayPost(id);
+
   }
 
   displayPost(id:string) {
@@ -35,9 +39,16 @@ export class SinglePostComponent implements OnInit {
         this.post = data;
       });
   }
-
-  onBack() {
-    this.router.navigate(['/posts']);
+  
+  onStar(id:string,like:number) {
+    like ++
+    this.postService.updateLike(id,like).subscribe(
+      (res) => {
+        console.log('ok')
+      }, (error) => {
+        console.log(error)
+      }
+    )
   }
 
   onEditPost(id:string) {
@@ -47,6 +58,14 @@ export class SinglePostComponent implements OnInit {
     else {
       this.router.navigate(['/']);
     }
+  }
+
+  onBack() {
+    this.router.navigate(['/posts']);
+  }
+
+  onClickCategory(category: string) {
+    this.router.navigate(['/post/api', category]);
   }
 
 }

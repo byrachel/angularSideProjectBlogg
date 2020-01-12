@@ -1,32 +1,39 @@
-<div class="col-md-6 offset-md-3 mt-5">
-    <div class="alert alert-info">
-        Username: test<br />
-        Password: test
-    </div>
-    <div class="card">
-        <h4 class="card-header">Angular 8 JWT Login Example</h4>
-        <div class="card-body">
-            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                        <div *ngIf="f.username.errors.required">Username is required</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                        <div *ngIf="f.password.errors.required">Password is required</div>
-                    </div>
-                </div>
-                <button [disabled]="loading" class="btn btn-primary">
-                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                    Login
-                </button>
-                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
-            </form>
+
+<div class="connect">
+    <br/>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+        <div class="col">
+            <p class="uppercase bold">Se connecter :</p>
         </div>
-    </div>
+        <div class="col">
+            <input type="text"
+            placeholder="e-Mail"
+            class="form-control rounded-0"
+            formControlName="email"
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+        </div>
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Indiquez votre e-Mail.</div>
+        </div>
+        <div class="col">
+            <input type="password"
+            placeholder="Mot de passe"
+            class="form-control rounded-0"
+            formControlName="password"
+            [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+        </div>
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Merci d'indiquer un mot de passe.</div>
+        </div>
+        <div class="col">
+            <button class="btn btn-dark btn-block rounded-0 uppercase bold"
+            type="submit"
+            [disabled]="loginForm.invalid">Valider</button>
+        </div>
+        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+        </div>
+    </form>
+    <br/>
 </div>
+

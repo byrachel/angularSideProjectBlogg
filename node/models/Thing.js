@@ -9,6 +9,7 @@ const postSchema = mongoose.Schema({
   content: { type: String, required: true },
   link: { type: String, required: true },
   like: { type: Number, required: false },
+  author: { type: String, required: false }
 });
 
 // Export du modèle avec les arguments : (nom du modèle, schéma à utiliser)

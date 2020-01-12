@@ -4,8 +4,8 @@
   <div class="spacer"></div>
   <a routerLink="posts" routerLinkActive="active" class="toolbar">Annuaire</a>
   <a routerLink="post/create" routerLinkActive="active" class="toolbar">Ajouter un post</a>
-  <!-- <a routerLink="signup" routerLinkActive="active" class="toolbar" *ngIf="!isAuth">Se connecter </a>
-  <a (click)="onSignOut()" *ngIf="isAuth" style="cursor:pointer">Logout</a> -->
+  <a routerLink="signup" routerLinkActive="active" class="toolbar" *ngIf="!currentUser">Se connecter</a>
+  <a (click)="onSignOut()" *ngIf="currentUser" style="cursor:pointer">Logout</a>
 </div>
 
 <!-- Content -->

@@ -8,11 +8,13 @@ import { SinglePostComponent } from './components/single-post/single-post.compon
 import { CategoryPostsComponent } from './components/category-posts/category-posts.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { SignupComponent } from './components/user/signup/signup.component';
+import { AuthGuard } from './services/auth.guard';
+import { UserComponent } from './components/user/user/user.component';
 
 
 const routes: Routes = [
-  { path: 'post/create', component: AddPostComponent },
-  { path: 'post/update/:id', component: AddPostComponent },
+  { path: 'post/create', canActivate: [AuthGuard], component: AddPostComponent },
+  { path: 'post/update/:id', canActivate: [AuthGuard], component: AddPostComponent },
   { path: 'posts', component: GetPostsComponent },
   { path: 'post/:id', component: SinglePostComponent },
   { path: 'post/api/:category', component: CategoryPostsComponent },

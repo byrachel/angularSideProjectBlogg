@@ -14,12 +14,11 @@ export class SidebarComponent implements OnInit {
   }
 
   onNewPost() {
-    // if(this.isAuth) {
     this.router.navigate(['/post/create']);
-    // }
-    // else {
-    //   this.router.navigate(['/signup']);
-    // }
+  }
+
+  onSignup() {
+    this.router.navigate(['/signup']);
   }
 
 }

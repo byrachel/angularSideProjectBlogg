@@ -8,13 +8,12 @@ const multer = require('../middleware/multer');
 // Import du controller
 const stuffCtrl = require('../controllers/stuff');
 
-// Méthode POST pour récupérer des données via un formulaire
-// Route protégée par le middleware : auth
-// Une fois authentifié, je peux ajouter le middleware d'envoi de fichier image
-router.post('/create/', stuffCtrl.createPost);
+// Méthode POST pour créer des données via un formulaire
+router.post('/create/', auth, stuffCtrl.createPost);
 
 // Methode PUT pour mettre à jour un objet + :id comme paramètre
-router.put('/update/:id', stuffCtrl.modifyPost);
+router.put('/update/:id', auth, stuffCtrl.modifyPost);
+router.put('/like/:id', stuffCtrl.addLike);
 
 // Méthode DELETE pour supprimer un objet 
 router.delete('/delete/:id', auth, stuffCtrl.deletePost);

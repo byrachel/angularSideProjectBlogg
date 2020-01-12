@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class CategoryPostsComponent implements OnInit {
 
   posts: Post[] = [];
+  category: string = '';
 
   constructor(private postService: PostService,
               private actRoute: ActivatedRoute,
@@ -19,6 +20,7 @@ export class CategoryPostsComponent implements OnInit {
 
   ngOnInit() {
     let category = this.actRoute.snapshot.paramMap.get('category');
+    this.category = category;
     this.displayPosts(category);
   }
 

@@ -13,14 +13,14 @@ import { SinglePostComponent } from './components/single-post/single-post.compon
 import { PostService } from './services/post.service';
 import { JwtInterceptor } from './services/jwt.interceptor';
 import { ErrorInterceptor } from './services/error.interceptor';
-import { AuthenticationService } from './services/authentication.service'
+import { AuthenticationService } from './services/authentication.service';
 
 import { HomeComponent } from './home/home.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { CategoryPostsComponent } from './components/category-posts/category-posts.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { SignupComponent } from './components/user/signup/signup.component';
-
+import { UserComponent } from './components/user/user/user.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,8 @@ import { SignupComponent } from './components/user/signup/signup.component';
     SinglePostComponent,
     CategoryPostsComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
