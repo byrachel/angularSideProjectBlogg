@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { User } from '../models/User';
@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
+
+    uri:string = 'http://localhost:3000/api';
+    headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     constructor(private http: HttpClient,
                 private router: Router) {
@@ -39,11 +42,11 @@ export class AuthenticationService {
     this.currentUserSubject.next(null);
   }
 
-  createNewUser(email: string, password: string) {
+  createNewUser(email: string, password: string, username: string) {
     return new Promise((resolve, reject) => {
       this.http.post(
         `${environment.apiUrl}/auth/signup`,
-        { email: email, password: password })
+        { email: email, password: password, username: username })
         .subscribe(
           () => {
             this.login(email, password)
@@ -54,5 +57,19 @@ export class AuthenticationService {
         );
     });
   }
+
+  // Error handling 
+  errorMgmt(error: HttpErrorResponse) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Get client-side error
+      errorMessage = error.error.message;
+    } else {
+      // Get server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log(errorMessage);
+    return throwError(errorMessage);
+    }
   
 }

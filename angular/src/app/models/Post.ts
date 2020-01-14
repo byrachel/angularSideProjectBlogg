@@ -5,4 +5,6 @@ export default class Post {
     content: String;
     link: String;
     like: Number;
+    date: String;
+    maj: String;
   }

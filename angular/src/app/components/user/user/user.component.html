@@ -4,6 +4,13 @@
         <div class="col-md-8">
             <h2>Mon compte</h2>
 
+                <p class="resum">Username : {{user.username}}</p>
+                <p class="resum">e-Mail : {{user.email}}</p>
+                <p class="resum">Website : {{user.website}}</p>
+
+                <button (click)="onCreate()" class="btn btn-light rounded-0 uppercase bold">Créer un post</button>
+                <button (click)="onSignOut()" *ngIf="currentUser" class="btn btn-light rounded-0 ml-2 uppercase bold">Logout</button>
+
 
         </div>
         <div class="col-md-4">

@@ -21,6 +21,7 @@ import { CategoryPostsComponent } from './components/category-posts/category-pos
 import { LoginComponent } from './components/user/login/login.component';
 import { SignupComponent } from './components/user/signup/signup.component';
 import { UserComponent } from './components/user/user/user.component';
+import { CategoryFilterComponent } from './components/category-filter/category-filter.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { UserComponent } from './components/user/user/user.component';
     CategoryPostsComponent,
     LoginComponent,
     SignupComponent,
-    UserComponent
+    UserComponent,
+    CategoryFilterComponent
   ],
   imports: [
     BrowserModule,

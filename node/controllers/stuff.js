@@ -9,8 +9,10 @@ exports.createPost = (req, res, next) => {
     resum: req.body.resum,
     content: req.body.content,
     link: req.body.link,
-    like: req.body.like,
-    author: ''
+    like: 0,
+    author: req.body.username,
+    date: req.body.date,
+    maj: req.body.maj
   }, (error, data) => {
     if (error) {
       return next(error)
@@ -24,13 +26,6 @@ exports.createPost = (req, res, next) => {
 exports.modifyPost = (req, res, next) => {
   Post.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
     .then(() => res.status(201).json({ message: 'Objet modifié !'}))
-    .catch(error => res.status(400).json({ error }));
-}
-
-// Logique de la route PUT pour mettre à jour le nombre de like
-exports.addLike = (req, res, next) => {
-  Post.updateOne({ _id: req.params.id }, {$inc : {like : 1}})
-    .then(() => res.status(201).json({ message: 'Great!'}))
     .catch(error => res.status(400).json({ error }));
 }
 

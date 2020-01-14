@@ -14,7 +14,8 @@ exports.signup = (req,res,next) => {
         // Je crée un nouvel utilisateur
         const user = new User({
             email: req.body.email,
-            password: hash
+            password: hash,
+            username: req.body.username
         });
         // J'enregitre le user dans la BDD
         user.save()
@@ -41,6 +42,9 @@ exports.login = (req, res, next) => {
         }
             res.status(200).json({
                 userId: user._id,
+                username: user.username,
+                website: user.website,
+                email: user.email,
                 // Création du token de la session / authentifie les requêtes
                 // .sign() = méthode pour encoder un token
                 token: jwt.sign(
@@ -54,7 +58,7 @@ exports.login = (req, res, next) => {
             });
         })
         // En cas d'erreur serveur
-        .catch(error => res.status(418).json({ error }));
+        .catch(error => res.status(404).json({ error }));
     })
     // Si l'utilisateur a un problème de connexion lié à mongoDB - erreur serveur
     .catch(error => res.status(500).json({ error }));

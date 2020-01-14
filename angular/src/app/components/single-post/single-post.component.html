@@ -10,9 +10,14 @@
             <br />
             <p>{{ post.content }}</p>
             <div class="space"></div>
-            <button class="card-title small" (click)="onClickCategory(post.category)">Catégorie: {{ post.category }}</button>
             <p class="lien uppercase">Site officiel : <a class="card-text lien" routerLink=[post.link]>{{ post.link }}</a></p>
-            <button (click)="onStar(post._id,post.like)"><img src="../../../assets/star.png"> {{ post.like }} fans </button>
+
+            <button class="resum uppercase" (click)="onClickCategory(post.category)">Catégorie: {{ post.category }}</button>
+            <div class="text-right">
+                <p class="small">Publié le: {{ post.date | date: 'd / M / yy' }}</p>
+                <p class="small">Dernière mise à jour : {{ post.maj | date: 'd / M / yy' }}</p>
+            </div>
+
             <div class="space"></div>
             <div class="text-right">
                 <button *ngIf="isAuth" type="button" (click)="onEditPost(post._id)" class="btn btn-light rounded-0 ml-2">Modifier ce post</button>

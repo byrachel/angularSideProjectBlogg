@@ -3,9 +3,8 @@
   <h1 class="logo" routerLink="/"><span class="bold">dev.</span>(io)</h1> 
   <div class="spacer"></div>
   <a routerLink="posts" routerLinkActive="active" class="toolbar">Annuaire</a>
-  <a routerLink="post/create" routerLinkActive="active" class="toolbar">Ajouter un post</a>
   <a routerLink="signup" routerLinkActive="active" class="toolbar" *ngIf="!currentUser">Se connecter</a>
-  <a (click)="onSignOut()" *ngIf="currentUser" style="cursor:pointer">Logout</a>
+  <a routerLink="user" *ngIf="currentUser" style="cursor:pointer" class="toolbar">Mon compte</a>
 </div>
 
 <!-- Content -->

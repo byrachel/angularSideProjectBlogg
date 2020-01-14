@@ -9,11 +9,10 @@ const multer = require('../middleware/multer');
 const stuffCtrl = require('../controllers/stuff');
 
 // Méthode POST pour créer des données via un formulaire
-router.post('/create/', auth, stuffCtrl.createPost);
+router.post('/create/', stuffCtrl.createPost);
 
 // Methode PUT pour mettre à jour un objet + :id comme paramètre
-router.put('/update/:id', auth, stuffCtrl.modifyPost);
-router.put('/like/:id', stuffCtrl.addLike);
+router.put('/update/:id', stuffCtrl.modifyPost);
 
 // Méthode DELETE pour supprimer un objet 
 router.delete('/delete/:id', auth, stuffCtrl.deletePost);

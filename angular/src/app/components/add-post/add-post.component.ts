@@ -33,6 +33,8 @@ export class AddPostComponent implements OnInit {
       resum: ['', [Validators.required] ],
       content: ['', [Validators.required] ],
       link: ['', [Validators.required] ],
+      date: new Date(),
+      maj: ''
     });
   }
 
@@ -54,7 +56,9 @@ export class AddPostComponent implements OnInit {
         category: data.category,
         resum: data.resum,
         content: data.content,
-        link: data.link
+        link: data.link,
+        date: data.date,
+        maj: new Date()
       });
     });
   }

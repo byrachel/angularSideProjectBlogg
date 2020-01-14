@@ -4,4 +4,5 @@ export class User {
     username: string;
     website: string;
     token?: string;
+    userId: string;
 }

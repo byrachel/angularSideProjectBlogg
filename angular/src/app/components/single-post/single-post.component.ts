@@ -16,7 +16,9 @@ export class SinglePostComponent implements OnInit {
     resum: '',
     content: '',
     link: '',
-    like: 0
+    like: 0,
+    date: '',
+    maj: ''
   }
 
   isAuth: boolean = true;
@@ -30,25 +32,13 @@ export class SinglePostComponent implements OnInit {
   ngOnInit() {
     let id = this.actRoute.snapshot.paramMap.get('id');
     this.displayPost(id);
-
   }
 
   displayPost(id:string) {
     this.postService.getPost(id)
       .subscribe(data => {
         this.post = data;
-      });
-  }
-  
-  onStar(id:string,like:number) {
-    like ++
-    this.postService.updateLike(id,like).subscribe(
-      (res) => {
-        console.log('ok')
-      }, (error) => {
-        console.log(error)
-      }
-    )
+    });
   }
 
   onEditPost(id:string) {

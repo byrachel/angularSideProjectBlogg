@@ -1,0 +1,18 @@
+
+<form [formGroup]="categoryForm" (ngSubmit)="onCategorySelected(category)">
+
+    <select id="category" class="form-control" formControlName="category">
+        <option value="">Choisissez une catégorie</option>
+        <option value="Framework">Framework</option>
+        <option value="Bibliothèque">Bibliothèque</option>
+        <option value="Module">Module</option>
+        <option value="Software">Software</option>
+        <option value="Composant">Composant</option>
+        <option value="Formation">Formations</option>
+        <option value="Concours">Concours</option>
+        <option value="Autre">Autre</option>
+    </select>
+
+    <button class="btn pink-btn btn-lg btn-block rounded-0">Sélectionner</button>
+
+</form>

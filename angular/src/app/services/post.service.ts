@@ -58,14 +58,6 @@ export class PostService {
     )
   }
 
-  updateLike(id:string, like:number) {
-    let url = `${this.uri}/like/${id}`;
-    console.log(like + ' + ' + id)
-    return this.http.put(url, like,  { headers: this.headers }).pipe(
-      catchError(this.errorMgmt)
-    )
-  }
-
   // Error handling 
   errorMgmt(error: HttpErrorResponse) {
   let errorMessage = '';

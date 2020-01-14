@@ -9,7 +9,7 @@ import { User } from './models/User';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular';
+  title = 'Dev.(io)';
   currentUser: User;
 
 constructor(
@@ -17,11 +17,6 @@ constructor(
   private authenticationService: AuthenticationService
 ) {
   this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-}
-
-onSignOut() {
-    this.authenticationService.logout();
-    this.router.navigate(['/signup']);
 }
 
 }

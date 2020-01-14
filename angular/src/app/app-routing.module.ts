@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: 'post/api/:category', component: CategoryPostsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'user', canActivate: [AuthGuard], component: UserComponent },
   { path: '', component: HomeComponent, pathMatch: 'full' }
 ];
 

@@ -31,7 +31,8 @@ export class SignupComponent implements OnInit {
 
     this.signupForm = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
-      password: [null, Validators.required]
+      password: [null, Validators.required],
+      username: [null, Validators.required]
     });
 
     this.loginForm = this.formBuilder.group({
@@ -43,7 +44,8 @@ export class SignupComponent implements OnInit {
   onSignup() {
     const email = this.signupForm.get('email').value;
     const password = this.signupForm.get('password').value;
-    this.authenticationService.createNewUser(email, password).then(
+    const username = this.signupForm.get('username').value;
+    this.authenticationService.createNewUser(email, password, username).then(
       () => {
         this.router.navigate(['/posts']);
       }
