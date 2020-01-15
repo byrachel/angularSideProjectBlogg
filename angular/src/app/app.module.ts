@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule,HTTP_INTERCEPTORS  } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,7 +22,8 @@ import { LoginComponent } from './components/user/login/login.component';
 import { SignupComponent } from './components/user/signup/signup.component';
 import { UserComponent } from './components/user/user/user.component';
 import { CategoryFilterComponent } from './components/category-filter/category-filter.component';
-import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { ReversePipe } from '../pipes/reverse.pipe';
+import { FilterPipe } from '../pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -37,13 +38,15 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     SignupComponent,
     UserComponent,
     CategoryFilterComponent,
-    SearchBarComponent
+    ReversePipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule 
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

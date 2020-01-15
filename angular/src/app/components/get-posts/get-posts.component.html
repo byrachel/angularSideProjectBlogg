@@ -2,14 +2,26 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <h2>Outils & services pour développeurs</h2>
-            <div class="card rounded-0 mb-3"
-            *ngFor="let p of Post">
+            <h2 class="mb-4 text-center">Outils & services JavaScript</h2>
 
-                <h3 class="card-header title uppercase" (click)="onClickPost(p._id)">{{ p.title }}</h3>
+            <!-- Search box -->
+            <div class="input-group mb-4">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Recherche: </span>
+                </div>
+                <input type="text" class="form-control" [(ngModel)]="searchText" />
+              </div>
+
+            <!-- List of posts -->
+            <div class="card rounded-0 mb-3"
+            *ngFor="let p of Post | reverse | filter : searchText ">
+                <div class="card-header title">
+                    <h3 class="uppercase" (click)="onClickPost(p._id)">{{ p.title }}
+                    <span class="float-right">></span></h3>
+                </div>
                 <div class="card-body">
-                    <button class="card-title small" (click)="onClickCategory(p.category)">Catégorie: {{ p.category }}</button>
-                    <p class="card-text">{{ p.resum }}</p>
+                    <button class="card-title small mb-3" (click)="onClickCategory(p.category)">Catégorie: {{ p.category }}</button>
+                    <p class="card-text resum">{{ p.resum }}</p>
                 </div>
             </div>
         </div>

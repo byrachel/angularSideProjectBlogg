@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class GetPostsComponent implements OnInit {
 
   Post: any = [];
+  searchText: string;
 
   constructor(private postService: PostService,
               private router: Router) { }
@@ -31,5 +32,6 @@ export class GetPostsComponent implements OnInit {
   onClickCategory(category: string) {
     this.router.navigate(['/post/api', category]);
   }
+
 
 }
