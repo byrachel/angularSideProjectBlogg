@@ -25,6 +25,7 @@ export class SinglePostComponent implements OnInit {
   }
 
   isAuth: boolean = true;
+  isMaj: boolean;
 
   constructor(private postService: PostService,
               private actRoute: ActivatedRoute,
@@ -41,6 +42,11 @@ export class SinglePostComponent implements OnInit {
     this.postService.getPost(id)
       .subscribe(data => {
         this.post = data;
+        if(this.post.majAuthor) {
+          return this.isMaj = true;
+        } else {
+          return this.isMaj = false;
+        }
     });
   }
 

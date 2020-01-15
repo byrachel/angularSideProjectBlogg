@@ -16,19 +16,21 @@
                 <p>Veuillez préciser un titre.</p>
                 </div>
             </div>
-    
-            <div class="form-group">
-            <select class="form-control mx-2" formControlName="category">
-            <option value="Framework">Framework</option>
-            <option value="Bibliothèque">Bibliothèque</option>
-            <option value="Module">Module</option>
-            <option value="Software">Software</option>
-            <option value="Composant">Composant</option>
-            <option value="Formation">Formations</option>
-            <option value="Concours">Concours</option>
-            <option value="Autre">Autre</option>
-            </select>
-            </div>
+
+                <div class="form-group">
+                    <span class="mx-2">Catégorie :</span>
+                    <select class="form-control mx-2" formControlName="category">
+                        <option value="Framework">Framework</option>
+                        <option value="Bibliothèque">Bibliothèque</option>
+                        <option value="Module">Module</option>
+                        <option value="Software">Software</option>
+                        <option value="Composant">Composant</option>
+                        <option value="Formation">Formations</option>
+                        <option value="Concours">Concours</option>
+                        <option value="Autre">Autre</option>
+                    </select>
+                </div>
+
     
             <div class="form-group">
                 <input type="text" class="form-control mx-2" formControlName="resum" placeholder="Résumé" />
@@ -51,11 +53,9 @@
                 <p>Précisez un lien vers le site officiel.</p>
                 </div>
             </div>
-            <div class="form-group mx-2">
-                <button type="submit"
-                [disabled]="postForm.invalid" 
-                class="btn btn-primary">Ajouter</button>
-                <button class="btn btn-secondary" type="reset" (click)="onReset()">Annuler</button>
+            <div class="form-group mx-2 text-center">
+                <button class="btn btn-outline-secondary rounded-0 uppercase bold mr-2" type="reset" (click)="onReset()">Annuler</button>
+                <button type="submit" [disabled]="postForm.invalid" class="btn btn-dark rounded-0 uppercase bold">Valider</button>
             </div>
             </form>
         </div>

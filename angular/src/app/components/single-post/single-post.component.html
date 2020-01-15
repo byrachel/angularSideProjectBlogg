@@ -15,12 +15,12 @@
             <button class="resum uppercase" (click)="onClickCategory(post.category)">Catégorie: {{ post.category }}</button>
             <div class="text-right">
                 <p class="small">Publié par {{ post.author }}, le {{ post.date | date: 'd / M / yy' }}</p>
-                <p class="small">Dernière mise à jour par {{ post.majAuthor }}, le {{ post.majDate | date: 'd / M / yy' }}</p>
+                <p class="small" *ngIf="isMaj">Dernière mise à jour par {{ post.majAuthor }}, le {{ post.majDate | date: 'd / M / yy' }}</p>
             </div>
 
             <div class="space"></div>
             <div class="text-right">
-                <button *ngIf="isAuth" type="button" (click)="onEditPost(post._id)" class="btn btn-light rounded-0 ml-2">Modifier ce post</button>
+                <button *ngIf="isAuth" type="button" (click)="onEditPost(post._id)" class="btn btn-secondary rounded-0">Modifier ce post</button>
                 <button type="button" class="btn btn-light rounded-0 ml-2" (click)="onBack()">Retour à l'annuaire</button>
             </div>
         </div>
