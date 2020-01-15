@@ -10,7 +10,7 @@ exports.createPost = (req, res, next) => {
     content: req.body.content,
     link: req.body.link,
     like: 0,
-    author: req.body.username,
+    author: req.body.author,
     date: req.body.date,
     maj: req.body.maj
   }, (error, data) => {

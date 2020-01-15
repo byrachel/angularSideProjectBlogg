@@ -18,7 +18,7 @@
             </div>
     
             <div class="form-group">
-            <select id="category" class="form-control mx-2" formControlName="category" [(ngModel)]="defaultCategory">
+            <select class="form-control mx-2" formControlName="category">
             <option value="Framework">Framework</option>
             <option value="Bibliothèque">Bibliothèque</option>
             <option value="Module">Module</option>
@@ -29,7 +29,6 @@
             <option value="Autre">Autre</option>
             </select>
             </div>
-    
     
             <div class="form-group">
                 <input type="text" class="form-control mx-2" formControlName="resum" placeholder="Résumé" />
@@ -56,6 +55,7 @@
                 <button type="submit"
                 [disabled]="postForm.invalid" 
                 class="btn btn-primary">Ajouter</button>
+                <button class="btn btn-secondary" type="reset" (click)="onReset()">Annuler</button>
             </div>
             </form>
         </div>

@@ -50,6 +50,7 @@ export class AuthenticationService {
         .subscribe(
           () => {
             this.login(email, password)
+            this.router.navigate(['/user'])
           },
           (error) => {
             reject(error);

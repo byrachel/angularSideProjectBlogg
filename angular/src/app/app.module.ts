@@ -22,6 +22,7 @@ import { LoginComponent } from './components/user/login/login.component';
 import { SignupComponent } from './components/user/signup/signup.component';
 import { UserComponent } from './components/user/user/user.component';
 import { CategoryFilterComponent } from './components/category-filter/category-filter.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { CategoryFilterComponent } from './components/category-filter/category-f
     LoginComponent,
     SignupComponent,
     UserComponent,
-    CategoryFilterComponent
+    CategoryFilterComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,

@@ -11,7 +11,9 @@ const postSchema = mongoose.Schema({
   like: { type: Number, required: false },
   author: { type: String, required: true },
   date: { type: String, required: true },
-  maj: { type: String, required: false}
+  maj: { type: Boolean, required: true},
+  majDate: { type: String, required: false},
+  majAuthor: { type: String, required: false }
 });
 
 // Export du modèle avec les arguments : (nom du modèle, schéma à utiliser)

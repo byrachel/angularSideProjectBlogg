@@ -18,7 +18,10 @@ export class SinglePostComponent implements OnInit {
     link: '',
     like: 0,
     date: '',
-    maj: ''
+    author: '',
+    maj: false,
+    majDate: '',
+    majAuthor: ''
   }
 
   isAuth: boolean = true;

@@ -5,6 +5,9 @@ export default class Post {
     content: String;
     link: String;
     like: Number;
+    author: String;
     date: String;
-    maj: String;
+    maj: Boolean;
+    majDate: String;
+    majAuthor: String;
   }

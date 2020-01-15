@@ -14,8 +14,8 @@
 
             <button class="resum uppercase" (click)="onClickCategory(post.category)">Catégorie: {{ post.category }}</button>
             <div class="text-right">
-                <p class="small">Publié le: {{ post.date | date: 'd / M / yy' }}</p>
-                <p class="small">Dernière mise à jour : {{ post.maj | date: 'd / M / yy' }}</p>
+                <p class="small">Publié par {{ post.author }}, le {{ post.date | date: 'd / M / yy' }}</p>
+                <p class="small">Dernière mise à jour par {{ post.majAuthor }}, le {{ post.majDate | date: 'd / M / yy' }}</p>
             </div>
 
             <div class="space"></div>

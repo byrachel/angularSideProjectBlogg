@@ -16,6 +16,7 @@ export class PostService {
   // Create Post
   createPost(data): Observable<any> {
     let url = `${this.uri}/create`;
+    console.log(data)
     return this.http.post(url, data)
       .pipe(
         catchError(this.errorMgmt)

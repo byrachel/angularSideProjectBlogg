@@ -1,8 +1,9 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-
+import { User } from "../../models/User";
 import { PostService } from '../../services/post.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import Post from 'src/app/models/Post';
 
 @Component({
@@ -22,9 +23,20 @@ export class AddPostComponent implements OnInit {
               private postService: PostService,
               private router: Router,
               private ngZone: NgZone,
-              private actRoute: ActivatedRoute) {
+              private actRoute: ActivatedRoute,
+              private authenticationService: AuthenticationService) {
     this.createForm();
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
+
+  currentUser: User  = {
+    username : '',
+    password : '',
+    email: '',
+    website: '',
+    userId: ''
+  }
+
 
   createForm() {
     this.postForm = this.formBuilder.group({
@@ -34,16 +46,23 @@ export class AddPostComponent implements OnInit {
       content: ['', [Validators.required] ],
       link: ['', [Validators.required] ],
       date: new Date(),
-      maj: ''
+      author: this.currentUser.username,
+      maj: false,
+      majDate: '',
+      majAuthor: '',
+      like: 0
     });
   }
 
   ngOnInit() {
+    this.currentUser = this.authenticationService.currentUserValue;
+
     let id = this.actRoute.snapshot.paramMap.get('id');
     if(id) {
       this.editMode = true;
       this.getPostToEdit(id);
     } else {
+      this.createForm();
       console.log('Ajoutez un post !')
     }
   }
@@ -57,8 +76,12 @@ export class AddPostComponent implements OnInit {
         resum: data.resum,
         content: data.content,
         link: data.link,
+        like: data.like,
         date: data.date,
-        maj: new Date()
+        author: data.author,
+        maj: true,
+        majDate: new Date(),
+        majAuthor: this.currentUser.username
       });
     });
   }
@@ -81,9 +104,14 @@ export class AddPostComponent implements OnInit {
           }, (error) => {
             console.log(error);
           });
+          console.log(this.postForm.value)
       }
     }
 
   }
+
+  onReset() {
+    this.postForm.reset();
+}
 
 }

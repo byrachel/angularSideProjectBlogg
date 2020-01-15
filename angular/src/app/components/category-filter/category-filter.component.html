@@ -2,7 +2,7 @@
 <form [formGroup]="categoryForm" (ngSubmit)="onCategorySelected(category)">
 
     <select id="category" class="form-control" formControlName="category">
-        <option value="">Choisissez une catégorie</option>
+        <option>Choisissez une catégorie</option>
         <option value="Framework">Framework</option>
         <option value="Bibliothèque">Bibliothèque</option>
         <option value="Module">Module</option>
@@ -16,3 +16,4 @@
     <button class="btn pink-btn btn-lg btn-block rounded-0">Sélectionner</button>
 
 </form>
+

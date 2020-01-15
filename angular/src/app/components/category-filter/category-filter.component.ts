@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class CategoryFilterComponent implements OnInit {
   categoryForm: FormGroup;
+  category: string = '';
 
   constructor(private router: Router, private formBuilder: FormBuilder) {
 
@@ -27,7 +28,9 @@ export class CategoryFilterComponent implements OnInit {
   }
 
   onCategorySelected(category: string) {
-    this.router.navigate(['/post/api', this.categoryForm.value.category]);
+    this.category = this.categoryForm.value.category;
+    this.router.navigate(['/post/api', this.category]);
+    this.categoryForm.reset();
   }
 
 }
