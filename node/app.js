@@ -16,6 +16,10 @@ var dotenv = require('dotenv').config();
 // Import d'un méthode Express pour gérer les 'path'
 const path = require('path');
 
+// Gestion du favicon
+var favicon = require('serve-favicon')
+app.use(favicon(path.join(__dirname, 'img', 'favicon.ico')))
+
 // Connexion à notre BDD
 mongoose.connect( process.env.mongoDB ,
   { useNewUrlParser: true,
