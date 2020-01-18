@@ -4,21 +4,24 @@ const express = require('express');
 // création de l'application Express
 const app = express();
 
+// Helmet : Secuirty Header
+const helmet = require('helmet');
+app.use(helmet());
+
 // Faciliter les intéractions avec notre BDD MongoDB
 const mongoose = require('mongoose');
-
-// Import du module Body Parser qui transforme le corps de la requête en JSON
-const bodyParser = require('body-parser');
-
-// Gestion des login mdp de la BDD
-var dotenv = require('dotenv').config();
 
 // Import d'un méthode Express pour gérer les 'path'
 const path = require('path');
 
 // Gestion du favicon
-var favicon = require('serve-favicon')
-app.use(favicon(path.join(__dirname, 'img', 'favicon.ico')))
+app.use(express.favicon(path.join(__dirname, 'favicon.ico')));
+
+// Gestion des login mdp de la BDD
+var dotenv = require('dotenv').config();
+
+// Import du module Body Parser qui transforme le corps de la requête en JSON
+const bodyParser = require('body-parser');
 
 // Connexion à notre BDD
 mongoose.connect( process.env.mongoDB ,
@@ -31,6 +34,7 @@ mongoose.connect( process.env.mongoDB ,
 app.use((req, res, next) => {
     // Ajout des entêtes : "headers"
     res.setHeader('Access-Control-Allow-Origin', '*');
+    // res.setHeader("Content-Security-Policy", "script-src 'self' https://devio-265313.appspot.com/");
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();

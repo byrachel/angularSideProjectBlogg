@@ -8,7 +8,7 @@ import { catchError, map } from 'rxjs/operators';
 })
 export class PostService {
 
-  uri:string = 'http://localhost:3000/api';
+  uri:string = 'https://devio-265313.appspot.com/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }

@@ -12,7 +12,7 @@ export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
 
-    uri:string = 'http://localhost:3000/api';
+    uri:string = 'https://devio-265313.appspot.com/api';
     headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     constructor(private http: HttpClient,
