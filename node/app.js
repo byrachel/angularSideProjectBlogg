@@ -1,6 +1,9 @@
 // import d'Express
 const express = require('express');
 
+// Middleware favicon
+var favicon = require('serve-favicon')
+
 // création de l'application Express
 const app = express();
 
@@ -13,9 +16,6 @@ const mongoose = require('mongoose');
 
 // Import d'un méthode Express pour gérer les 'path'
 const path = require('path');
-
-// Gestion du favicon
-app.use(express.favicon(path.join(__dirname, 'favicon.ico')));
 
 // Gestion des login mdp de la BDD
 var dotenv = require('dotenv').config();
@@ -32,13 +32,16 @@ mongoose.connect( process.env.mongoDB ,
 
 // 1er middleware exécuté : Gestion de l'erreur CORS (cross origin ressource sharing)
 app.use((req, res, next) => {
-    // Ajout des entêtes : "headers"
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    // res.setHeader("Content-Security-Policy", "script-src 'self' https://devio-265313.appspot.com/");
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
-    next();
-  });
+  // Ajout des entêtes : "headers"
+  res.setHeader("Content-Security-Policy", "script-src 'self' https://apis.google.com");
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+  next();
+});
+
+// Gestion du favicon 
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
 // J'appelle la méthode bodyParser pour toutes les routes
 app.use(bodyParser.json());
