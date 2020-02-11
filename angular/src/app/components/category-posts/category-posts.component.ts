@@ -20,7 +20,8 @@ export class CategoryPostsComponent implements OnInit {
 
   ngOnInit() {
     let category = this.actRoute.snapshot.paramMap.get('category');
-    // this.category = category;
+    this.category = category;
+    console.log(this.category);
     this.displayPosts(category);
   }
 

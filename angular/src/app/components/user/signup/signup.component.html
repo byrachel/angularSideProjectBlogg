@@ -46,7 +46,7 @@
                     <input type="text"
                             id="mail"
                             class="form-control rounded-0"
-                            [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                            [ngClass]="{ 'is-invalid': f.email.errors }"
                             formControlName="email">
                 </div>
                 <div class="form-group">
@@ -54,7 +54,7 @@
                     <input type="password"
                             id="pwd"
                             class="form-control rounded-0"
-                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                            [ngClass]="{ 'is-invalid': f.password.errors }"
                             formControlName="password">
                 </div>
                 <button class="btn btn-dark btn-block rounded-0"

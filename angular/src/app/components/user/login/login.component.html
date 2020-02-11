@@ -11,9 +11,9 @@
             placeholder="e-Mail"
             class="form-control rounded-0"
             formControlName="email"
-            [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+            [ngClass]="{ 'is-invalid': f.email.errors }">
         </div>
-        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors" class="invalid-feedback">
             <div *ngIf="f.email.errors.required">Indiquez votre e-Mail.</div>
         </div>
         <div class="col">
@@ -21,9 +21,9 @@
             placeholder="Mot de passe"
             class="form-control rounded-0"
             formControlName="password"
-            [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+            [ngClass]="{ 'is-invalid': f.password.errors }">
         </div>
-        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors" class="invalid-feedback">
             <div *ngIf="f.password.errors.required">Merci d'indiquer un mot de passe.</div>
         </div>
         <div class="col">

@@ -1,4 +1,7 @@
-runtime: nodejs12
+runtime: nodejs
+env: flex
+env_variables: 
+  mongoDB: mongodb+srv://ratch_admin_06:Loona0607@cluster0-jdb4r.mongodb.net/test?retryWrites=true&w=majority
 
 instance_class: F2
 

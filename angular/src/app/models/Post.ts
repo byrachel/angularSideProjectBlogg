@@ -1,13 +1,14 @@
 export default class Post {
-    title: String;
-    category: String;
-    resum: String;
-    content: String;
-    link: String;
+    _id: string;
+    title: string;
+    category: string;
+    resum: string;
+    content: string;
+    link: string;
     like: Number;
-    author: String;
-    date: String;
+    author: string;
+    date: string;
     maj: Boolean;
-    majDate: String;
-    majAuthor: String;
+    majDate: string;
+    majAuthor: string;
   }

@@ -11,6 +11,7 @@ import Post from '../../models/Post';
 export class SinglePostComponent implements OnInit {
 
   post: Post = {
+    _id: '',
     title: '',
     category: '',
     resum: '',

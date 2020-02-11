@@ -12,7 +12,7 @@ export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
 
-    uri:string = 'https://devio-265313.appspot.com/api';
+    uri:string = 'https://node-devio.appspot.com';
     headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     constructor(private http: HttpClient,
@@ -26,7 +26,7 @@ export class AuthenticationService {
     }
 
   login(email: string, password: string) {
-    return this.http.post<any>(`${environment.apiUrl}/auth/login`, { email, password })
+    return this.http.post<any>(`${this.uri}/auth/login`, { email, password })
       .pipe(map(user => {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(user));
@@ -45,7 +45,7 @@ export class AuthenticationService {
   createNewUser(email: string, password: string, username: string) {
     return new Promise((resolve, reject) => {
       this.http.post(
-        `${environment.apiUrl}/auth/signup`,
+        `${this.uri}/auth/signup`,
         { email: email, password: password, username: username })
         .subscribe(
           () => {

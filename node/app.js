@@ -7,9 +7,9 @@ var favicon = require('serve-favicon')
 // création de l'application Express
 const app = express();
 
-// Helmet : Secuirty Header
-const helmet = require('helmet');
-app.use(helmet());
+// Helmet : Security Header
+// const helmet = require('helmet');
+// app.use(helmet());
 
 // Faciliter les intéractions avec notre BDD MongoDB
 const mongoose = require('mongoose');
@@ -33,7 +33,6 @@ mongoose.connect( process.env.mongoDB ,
 // 1er middleware exécuté : Gestion de l'erreur CORS (cross origin ressource sharing)
 app.use((req, res, next) => {
   // Ajout des entêtes : "headers"
-  res.setHeader("Content-Security-Policy", "script-src 'self' https://apis.google.com");
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
