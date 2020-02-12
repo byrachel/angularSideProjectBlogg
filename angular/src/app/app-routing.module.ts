@@ -10,6 +10,7 @@ import { LoginComponent } from './components/user/login/login.component';
 import { SignupComponent } from './components/user/signup/signup.component';
 import { AuthGuard } from './services/auth.guard';
 import { UserComponent } from './components/user/user/user.component';
+import { SigninComponent } from './components/user/signin/signin.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'post/:id', component: SinglePostComponent },
   { path: 'post/api/:category', component: CategoryPostsComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'user', canActivate: [AuthGuard], component: UserComponent },
   { path: '', component: HomeComponent, pathMatch: 'full' }

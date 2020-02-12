@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../../../services/authentication.service';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: 'app-signin',
+  templateUrl: './signin.component.html',
+//   styleUrls: ['./signin.component.css']
 })
-export class SignupComponent implements OnInit {
+export class SigninComponent implements OnInit {
 
   signupForm: FormGroup;
   errorMessage: string;
@@ -30,38 +30,14 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
 
-    this.signupForm = this.formBuilder.group({
-      email: [null, [Validators.required, Validators.email]],
-      password: [null, Validators.required],
-      username: [null, Validators.required]
-    });
-
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
-  onSignup() {
-    const email = this.signupForm.get('email').value;
-    const password = this.signupForm.get('password').value;
-    const username = this.signupForm.get('username').value;
-    this.authenticationService.createNewUser(email, password, username).then(
-      () => {
-        console.log('ok');
-      }
-    ).catch(
-      (error) => {
-        this.errorMessage = error.message;
-      }
-    );
-    if(this.success) {
-      return this.message = 'Votre compte est créé.';
-    }
-  }
-
-  // convenience getter for easy access to form fields
-  get f() { return this.loginForm.controls; }
+    // convenience getter for easy access to form fields
+    get f() { return this.loginForm.controls; }
 
   onSubmitIn() {
     // stop here if form is invalid

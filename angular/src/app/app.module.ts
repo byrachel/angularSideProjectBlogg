@@ -24,6 +24,7 @@ import { UserComponent } from './components/user/user/user.component';
 import { CategoryFilterComponent } from './components/category-filter/category-filter.component';
 import { ReversePipe } from '../pipes/reverse.pipe';
 import { FilterPipe } from '../pipes/filter.pipe';
+import { SigninComponent } from './components/user/signin/signin.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { FilterPipe } from '../pipes/filter.pipe';
     CategoryPostsComponent,
     LoginComponent,
     SignupComponent,
+    SigninComponent,
     UserComponent,
     CategoryFilterComponent,
     ReversePipe,

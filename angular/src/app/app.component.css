@@ -7,7 +7,7 @@
   .toolbar {
     height: 90px;
     margin: 0px;
-    padding: 15px;
+    padding: 20px;
     display: flex;
     align-items: center;
     background-color: #F8F0ED;
@@ -21,4 +21,22 @@
     font-size: 0.9em;
     letter-spacing: 1px;
     font-weight: 700;
+  }
+
+  @media only screen and (max-width:800px) {
+
+    .toolbar {
+      padding: 10px;
+    }
+  
+    .toolbar a {
+      font-size: 0.7em;
+      letter-spacing: 0px;
+    }
+
+    h1 {
+      font-size: 1.6em;
+      letter-spacing: 1px;
+    }
+
   }

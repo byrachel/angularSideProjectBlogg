@@ -43,14 +43,14 @@ export class AuthenticationService {
   }
 
   createNewUser(email: string, password: string, username: string) {
+    let success = false;
     return new Promise((resolve, reject) => {
       this.http.post(
         `${this.uri}/auth/signup`,
         { email: email, password: password, username: username })
         .subscribe(
           () => {
-            this.login(email, password)
-            this.router.navigate(['/user'])
+            this.router.navigate(['/signin'])
           },
           (error) => {
             reject(error);
